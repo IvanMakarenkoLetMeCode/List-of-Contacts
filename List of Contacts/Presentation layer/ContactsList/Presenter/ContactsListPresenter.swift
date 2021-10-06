@@ -35,20 +35,14 @@ extension ContactsListPresenter: ContactsListViewOutput {
         setupInitialState()
     }
     
-    func addContactButtonDidTap() {
+    func addContactButtonDidTap(_ controller: ContactsListViewController) {
         
-        cells.append(ContactsListCellDataProducer(id: UUID().uuidString,
-                                                  firstName: "Bob",
-                                                  lastName: "Gug",
-                                                  birthDay: "14.06.1986",
-                                                  company: "eafa",
-                                                  email: "argeggdg"))
-        view?.set(cells: cells)
+        router?.showAddContact(delegate: controller)
     }
     
-    func deleteButtonDidTap(index: Int) {
+    func deleteButtonDidTap(model: ContactsListCellData) {
         
-        cells.remove(at: index)
+        cells = cells.filter { $0.id != model.id }
         view?.set(cells: cells)
     }
     
@@ -61,6 +55,12 @@ extension ContactsListPresenter: ContactsListViewOutput {
         }
         
         searchContacts(searchText: searchText)
+    }
+    
+    func addContactToList(cell: ContactsListCellData) {
+        
+        cells.append(cell)
+        view?.set(cells: cells)
     }
     
 }
@@ -80,21 +80,20 @@ private extension ContactsListPresenter {
             ContactsListCellDataProducer(id: UUID().uuidString,
                                          firstName: "Bob",
                                          lastName: "Gug",
-                                         birthDay: "14.06.1986",
-                                         company: "eafa",
-                                         email: "argeggdg"),
+                                         birthday: "14.06.1986",
+                                         company: "Red",
+                                         email: "arge@jol.com"),
             ContactsListCellDataProducer(id: UUID().uuidString,
-                                         firstName: "afgafgg",
-                                         lastName: "asgasg",
-                                         birthDay: "asgsg",
-                                         company: "asgsg",
-                                         email: "sdgag"),
+                                         firstName: "Alice",
+                                         lastName: "Fleed",
+                                         birthday: "18.01.1996",
+                                         email: "sdgag@mail.ru"),
             ContactsListCellDataProducer(id: UUID().uuidString,
-                                         firstName: "asgasdg",
-                                         lastName: "sdgasdg",
-                                         birthDay: "sdgsdg",
-                                         company: "ASDGASDG",
-                                         email: "ASDGGDGf")
+                                         firstName: "Greg",
+                                         lastName: "Pop",
+                                         birthday: "25.12.1978",
+                                         company: "Figma",
+                                         email: "thgh@gmail.com")
         ]
         self.cells = cells
         view?.set(cells: cells)

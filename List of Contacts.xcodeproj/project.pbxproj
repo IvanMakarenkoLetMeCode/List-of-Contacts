@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		7791C846270CBB8B006AFB74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7791C845270CBB8B006AFB74 /* AppDelegate.swift */; };
 		7791C84F270CBB8E006AFB74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7791C84E270CBB8E006AFB74 /* Assets.xcassets */; };
+		7795434D270D01900083CB96 /* AddContactPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795434C270D01900083CB96 /* AddContactPresenter.swift */; };
+		7795434F270D01A30083CB96 /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7795434E270D01A30083CB96 /* AddContactViewController.swift */; };
+		77954351270D01B30083CB96 /* AddContactViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77954350270D01B30083CB96 /* AddContactViewOutput.swift */; };
+		77954353270D01BF0083CB96 /* AddContactViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77954352270D01BF0083CB96 /* AddContactViewInput.swift */; };
+		77954355270D07700083CB96 /* VTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77954354270D07700083CB96 /* VTextField.swift */; };
 		77E16F46270CC63700E94A9E /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E16F45270CC63700E94A9E /* Router.swift */; };
 		77E16F48270CC73600E94A9E /* AssemblyModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E16F47270CC73600E94A9E /* AssemblyModelBuilder.swift */; };
 		77E16F4C270CC7DC00E94A9E /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E16F4B270CC7DC00E94A9E /* MainNavigationController.swift */; };
@@ -34,6 +39,11 @@
 		7791C845270CBB8B006AFB74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7791C84E270CBB8E006AFB74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7791C853270CBB8E006AFB74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7795434C270D01900083CB96 /* AddContactPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactPresenter.swift; sourceTree = "<group>"; };
+		7795434E270D01A30083CB96 /* AddContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
+		77954350270D01B30083CB96 /* AddContactViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewOutput.swift; sourceTree = "<group>"; };
+		77954352270D01BF0083CB96 /* AddContactViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewInput.swift; sourceTree = "<group>"; };
+		77954354270D07700083CB96 /* VTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VTextField.swift; sourceTree = "<group>"; };
 		77E16F45270CC63700E94A9E /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		77E16F47270CC73600E94A9E /* AssemblyModelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyModelBuilder.swift; sourceTree = "<group>"; };
 		77E16F4B270CC7DC00E94A9E /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
@@ -105,12 +115,40 @@
 			path = "List of Contacts";
 			sourceTree = "<group>";
 		};
+		77954349270D013E0083CB96 /* AddContact */ = {
+			isa = PBXGroup;
+			children = (
+				7795434A270D01650083CB96 /* View */,
+				7795434B270D016B0083CB96 /* Presenter */,
+			);
+			path = AddContact;
+			sourceTree = "<group>";
+		};
+		7795434A270D01650083CB96 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				77954352270D01BF0083CB96 /* AddContactViewInput.swift */,
+				77954350270D01B30083CB96 /* AddContactViewOutput.swift */,
+				7795434E270D01A30083CB96 /* AddContactViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7795434B270D016B0083CB96 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				7795434C270D01900083CB96 /* AddContactPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		77E16F3F270CC17600E94A9E /* Presentation layer */ = {
 			isa = PBXGroup;
 			children = (
 				77E16F49270CC7C500E94A9E /* Core */,
 				77E16F4A270CC7CC00E94A9E /* MainNavigation */,
 				77E16F4D270CC87700E94A9E /* ContactsList */,
+				77954349270D013E0083CB96 /* AddContact */,
 			);
 			path = "Presentation layer";
 			sourceTree = "<group>";
@@ -234,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				77E16F6C270CE4AE00E94A9E /* VButton.swift */,
+				77954354270D07700083CB96 /* VTextField.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -359,23 +398,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77954355270D07700083CB96 /* VTextField.swift in Sources */,
 				77E16F6D270CE4AE00E94A9E /* VButton.swift in Sources */,
 				77E16F53270CC8E800E94A9E /* ContactsListViewController.swift in Sources */,
 				77E16F48270CC73600E94A9E /* AssemblyModelBuilder.swift in Sources */,
 				77E16F62270CCD7E00E94A9E /* AppDesignFontName.swift in Sources */,
 				77E16F60270CCD6D00E94A9E /* AppDesignIcon.swift in Sources */,
 				77E16F51270CC8C500E94A9E /* ContactsListPresenter.swift in Sources */,
+				77954351270D01B30083CB96 /* AddContactViewOutput.swift in Sources */,
 				77E16F55270CC8F600E94A9E /* ContactsListViewOutput.swift in Sources */,
 				77E16F57270CC90300E94A9E /* ContactsListViewInput.swift in Sources */,
 				77E16F59270CC94500E94A9E /* BaseViewOutput.swift in Sources */,
 				77E16F46270CC63700E94A9E /* Router.swift in Sources */,
+				77954353270D01BF0083CB96 /* AddContactViewInput.swift in Sources */,
 				77E16F64270CCD8D00E94A9E /* AppDesignColor.swift in Sources */,
 				77E16F6A270CD5B700E94A9E /* ContactsListCellData.swift in Sources */,
 				77E16F4C270CC7DC00E94A9E /* MainNavigationController.swift in Sources */,
 				77E16F5B270CC95500E94A9E /* BaseViewInput.swift in Sources */,
+				7795434F270D01A30083CB96 /* AddContactViewController.swift in Sources */,
 				77E16F5E270CCD3500E94A9E /* AppDesign.swift in Sources */,
 				7791C846270CBB8B006AFB74 /* AppDelegate.swift in Sources */,
 				77E16F68270CD54800E94A9E /* ContactsListViewCell.swift in Sources */,
+				7795434D270D01900083CB96 /* AddContactPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

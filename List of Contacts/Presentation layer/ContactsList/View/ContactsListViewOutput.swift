@@ -8,7 +8,8 @@
 protocol ContactsListViewOutput: BaseViewOutput {
     
     init(view: ContactsListViewInput, router: RouterProtocol)
-    func addContactButtonDidTap()
-    func deleteButtonDidTap(index: Int)
+    func addContactButtonDidTap(_ controller: ContactsListViewController)
+    func deleteButtonDidTap(model: ContactsListCellData)
     func searchTextDidChange(_ searchText: String?)
+    func addContactToList(cell: ContactsListCellData)
 }

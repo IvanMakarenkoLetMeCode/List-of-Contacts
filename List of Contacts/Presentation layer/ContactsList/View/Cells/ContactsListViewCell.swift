@@ -10,7 +10,7 @@ import TinyConstraints
 
 protocol ContactsListViewCellDelegate: AnyObject {
     
-    func deleteButtonDidTap(_ cell: UITableViewCell)
+    func deleteButtonDidTap(_ model: ContactsListCellData)
 }
 
 class ContactsListViewCell: UITableViewCell {
@@ -18,7 +18,7 @@ class ContactsListViewCell: UITableViewCell {
     // MARK: - Private properties
     
     private let titleLabel = UILabel()
-    private let birthDayLabel = UILabel()
+    private let birthdayLabel = UILabel()
     private let companyLabel = UILabel()
     private let emailLabel = UILabel()
     private let deleteButton = VButton()
@@ -42,9 +42,10 @@ class ContactsListViewCell: UITableViewCell {
         self.model = model
         self.delegate = delegate
         titleLabel.text = model.firstName + " " + model.lastName
-        birthDayLabel.text = model.birthDay
+        birthdayLabel.text = model.birthday
         companyLabel.text = model.company
         emailLabel.text = model.email
+        companyLabel.isHidden = model.company == nil
     }
     
 }
@@ -64,8 +65,8 @@ private extension ContactsListViewCell {
         titleLabel.font = AppDesign.FontName.roboto.regularWith(size: 16)
         titleLabel.textColor = AppDesign.Color.title.ui
         
-        birthDayLabel.font = AppDesign.FontName.roboto.regularWith(size: 12)
-        birthDayLabel.textColor = AppDesign.Color.grey.ui
+        birthdayLabel.font = AppDesign.FontName.roboto.regularWith(size: 12)
+        birthdayLabel.textColor = AppDesign.Color.grey.ui
         
         for label in [companyLabel, emailLabel] as [UILabel] {
             
@@ -87,7 +88,7 @@ private extension ContactsListViewCell {
         mainView.addSubview(deleteButton)
         mainView.addSubview(separatorView)
         contentStackView.addArrangedSubview(titleLabel)
-        contentStackView.addArrangedSubview(birthDayLabel)
+        contentStackView.addArrangedSubview(birthdayLabel)
         contentStackView.addArrangedSubview(companyLabel)
         contentStackView.addArrangedSubview(emailLabel)
         
@@ -103,7 +104,8 @@ private extension ContactsListViewCell {
     
     @objc func deleteButtonDidTap(_ sender: VButton) {
         
-        delegate?.deleteButtonDidTap(self)
+        guard let model = model else { return }
+        delegate?.deleteButtonDidTap(model)
     }
     
 }

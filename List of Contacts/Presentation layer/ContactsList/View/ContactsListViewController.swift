@@ -75,10 +75,19 @@ extension ContactsListViewController: UISearchBarDelegate {
 // MARK: - ContactsListViewCellDelegate
 extension ContactsListViewController: ContactsListViewCellDelegate {
     
-    func deleteButtonDidTap(_ cell: UITableViewCell) {
+    func deleteButtonDidTap(_ model: ContactsListCellData) {
         
-        guard let indexPath = tableView.indexPath(for: cell) else { return }
-        output.deleteButtonDidTap(index: indexPath.item)
+        output.deleteButtonDidTap(model: model)
+    }
+    
+}
+
+// MARK: - AddContactPresenterDelegate
+extension ContactsListViewController: AddContactPresenterDelegate {
+    
+    func addContactToList(cell: ContactsListCellData) {
+        
+        output.addContactToList(cell: cell)
     }
     
 }
@@ -128,7 +137,7 @@ private extension ContactsListViewController {
     
     @objc func addContactButtonDidTap(_ sender: VButton) {
         
-        output.addContactButtonDidTap()
+        output.addContactButtonDidTap(self)
     }
     
 }
